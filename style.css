@@ -1,5 +1,51 @@
+/* Global Formatting */
 
-/*Inventory images*/
-img {
-	width: 250px;
+/* clickable navs */
+h4 {
+	text-align: center;
+	cursor: pointer;
 }
+
+/* form labels */
+label {
+	text-transform: capitalize;
+}
+
+button {
+	text-transform: uppercase;
+}
+
+
+#wrapper
+{
+  position: fixed;
+  
+  top: 0;
+  left: 0;
+}
+#element
+{
+  position: relative;
+  background: #f00;
+  left: 0%;
+  
+  -webkit-transition: left 1s;
+  -moz-transition: left 1s;
+  -o-transition: left 1s;
+  transition: left 1s;
+}
+
+.hidden > #element { left: -100%; }
+
+input { margin-top: 100px; }
+
+/* main */
+
+
+/* Inventory images */
+
+
+/* Cart button nav */
+
+
+/* Contact button nav */
