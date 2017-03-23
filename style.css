@@ -1,43 +1,22 @@
 /* Global Formatting */
-
-/* clickable navs */
-h4 {
-	text-align: center;
-	cursor: pointer;
+body {
+	font-family: 'Raleway', sans-serif;
 }
+
+/* primary navbar */
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-inverse {
+	border-radius: 0;
+}
+
 
 /* form labels */
 label {
 	text-transform: capitalize;
 }
-
-button {
-	text-transform: uppercase;
-}
-
-
-#wrapper
-{
-  position: fixed;
-  
-  top: 0;
-  left: 0;
-}
-#element
-{
-  position: relative;
-  background: #f00;
-  left: 0%;
-  
-  -webkit-transition: left 1s;
-  -moz-transition: left 1s;
-  -o-transition: left 1s;
-  transition: left 1s;
-}
-
-.hidden > #element { left: -100%; }
-
-input { margin-top: 100px; }
 
 /* main */
 
@@ -45,7 +24,90 @@ input { margin-top: 100px; }
 /* Inventory images */
 
 
-/* Cart button nav */
+
+/* login */
+.loginbg {
+	background-color: beige;
+	padding: 20px 40px;
+}
 
 
-/* Contact button nav */
+
+/* footer */
+
+#myFooter {
+	background-color: #373a48;
+	color: white;
+}
+
+#myFooter .footer-copyright{
+	background-color: #383737;
+	padding-top:3px;
+	padding-bottom:3px;
+	text-align: center;
+}
+
+#myFooter .footer-copyright p{
+	margin: 10px;
+	color: #ccc;
+}
+
+#myFooter ul{
+	list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+
+}
+
+#myFooter h5{
+	font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter a{
+	color:#d2d1d1;
+	text-decoration: none;
+}
+
+#myFooter a:hover, #myFooter a:focus{
+	text-decoration: none;
+	color:white;
+}
+
+#myFooter .myCols{
+	text-align: center;
+}
+
+#myFooter .social-networks{
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 38px;
+}
+
+#myFooter .social-networks a{
+    font-size: 32px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #f9f9f9;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+#myFooter .social-networks a:hover{
+	text-decoration: none;
+
+}
+
+#myFooter .facebook:hover{
+	color:#0077e2;
+}
+
+#myFooter .google:hover{
+	color:#ef1a1a;
+}
+
+#myFooter .twitter:hover{
+	color: #00aced;
+}
