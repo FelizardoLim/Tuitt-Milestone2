@@ -27,6 +27,7 @@
 					<?php } else {
 						echo "<li><a href='logout.php'>logout</a></li>"; 
 					} ?>
+					<li><a class="glyphicon glyphicon-shopping-cart" aria-hidden="true" href="cart.php"></a></li>
 				</ul>
 			</div>
 		</div>

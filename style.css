@@ -3,6 +3,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+
 /* primary navbar */
 .navbar {
 	margin-bottom: 0;
@@ -18,10 +19,86 @@ label {
 	text-transform: capitalize;
 }
 
+
 /* main */
+.categorydropdown {
+	text-align: right;
+	padding-top: 20px;
+}
 
 
-/* Inventory images */
+#wrapper {
+	position: relative;
+}
+
+
+#content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.1);
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: visibility opacity 0.2s;
+}
+
+#wrapper:hover #content {
+	visibility: visible;
+	opacity: 1;
+}
+
+.inventoryimg {
+	margin: 0 auto;
+}
+
+.contentbtn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+
+/*cart*/
+.cartitem {
+	padding-top: 70px;
+}
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+
+#tableimg {
+	width: 10%;
+}
+
+#tableimg img {
+	width: 100%;
+}
+
+#tablespace {
+	width: 5%;
+}
+
+#tablename {
+	width: 5%;
+}
+
+#tablequantity {
+	width: 5%;
+}
+
+#tableprice {
+	width: 5%;
+}
+
+#tableremove {
+	width: 5%;
+}
 
 
 
@@ -110,4 +187,11 @@ label {
 
 #myFooter .twitter:hover{
 	color: #00aced;
+}
+
+
+@media only screen and (max-width: 768px) {
+	#tableimg img {
+		min-width: 100px;
+	}
 }
