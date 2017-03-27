@@ -27,51 +27,28 @@
 	<?php require_once('navbar.php'); ?>
 	<!-- cart start -->
 	<h3 class="text-center">My Cart</h3>
-	<div>
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-sm-2 col-sm-offset-1">
-					<img class="img-responsive" src="images/inventory/orange.jpg">
-				</div>
-				<div class="col-sm-2 cartitem">
-					<span>Orange</span>
-				</div>
-				<div class="col-sm-1 col-sm-offset-2 cartitem">
-					<form class="form-group" method="POST">
-						<input class="form-control" type="number" min="1" max="$stock"></input>
-					</form>
-				</div>
-				<div class="col-sm-2 cartitem">
-					<span>PHP 150.00</span>
-				</div>
-				<div class="col-sm-1 cartitem">
-					<a href="#">Remove</a>
-				</div>
-			</div>
+	<div class="container">
+		<div class="table-responsive">
+			<table class="table text-center">
+				<tbody>
+					<tr>
+						<td id="tablespace"></td>
+						<td id="tableimg"><img src="images/inventory/apple.jpg" class="img-responsive"></td>
+						<td id="tablename">Orange</td>
+						<td id="tablespace"></td>
+						<td id="tablequantity">
+							<form method="POST">
+								<input class="form-control" type="number" min="1" max="$stock"></input>
+							</form>
+						</td>
+						<td id="tableprice">PHP 150.00</td>
+						<td id="tableremove"><a href="#">Remove</a></td>
+						<td id="tablespace"></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
-
-<div class="container table-responsive">
-	<table class="table text-center">
-		<tbody>
-			<tr style="padding-left: 200px; padding-right: 200px;">
-				<!-- <td id="tablespace"></td> -->
-				<td id="tableimg"><img src="images/inventory/apple.jpg" class="img-responsive"></td>
-				<td id="tablename">Orange</td>
-				<!-- <td id="tablespace"></td> -->
-				<td id="tablequantity">
-					<form method="POST">
-						<input class="form-control" type="number" min="1" max="$stock"></input>
-					</form>
-				</td>
-				<td id="tableprice">PHP 150.00</td>
-				<td id="tableremove"><a href="#">Remove</a></td>
-				<!-- <td id="tablespace"></td> -->
-			</tr>
-		</tbody>
-	</table>
-</div>
-
 	<!-- cart end -->
 	<!-- footer -->
 	<?php require_once('footer.php'); ?>
