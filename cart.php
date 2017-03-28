@@ -31,19 +31,55 @@
 		<div class="table-responsive">
 			<table class="table text-center">
 				<tbody>
+				<?php 
+					include('connection.php');
+					mysqli_set_charset($conn,"UTF8");
+
+					if(isset($_SESSION['cart'])) {
+						foreach ($_SESSION['cart'] as $id => $quantity) {
+							$sql = "SELECT * FROM product WHERE id=$id";
+							extract(mysqli_fetch_assoc(mysqli_query($conn, $sql)));
+
+					//1. $sql query - $sql = "...."
+					//2. run the query -- $result = mysqli_query($conn, $sql)
+					//3. conver to associative array -- eg. while($row = mysqli_fetch_assoc($result))
+					//4. extract to get each index as separate variable based on (key). Without extract - variable naming needs to be declared eg. $name = $row['name'];
+				?>
 					<tr>
 						<td id="tablespace"></td>
-						<td id="tableimg"><img src="images/inventory/apple.jpg" class="img-responsive"></td>
-						<td id="tablename">Orange</td>
+						<td id="tableimg">
+							<img src="<?php echo "$image"; ?>" class="img-responsive">
+						</td>
+						<td id="tablename">
+							<?php echo "$name"; ?>
+						</td>
 						<td id="tablespace"></td>
 						<td id="tablequantity">
 							<form method="POST">
-								<input class="form-control" type="number" min="1" max="$stock"></input>
+								<input class="form-control" type="number" min="1" max="$stock" value="<?php echo $_SESSION['cart'][$id]; ?>">
 							</form>
 						</td>
-						<td id="tableprice">PHP 150.00</td>
-						<td id="tableremove"><a href="#">Remove</a></td>
+						<td id="tableprice">
+							<?php echo number_format($price,2); ?>
+						</td>
+						<td id="tableremove">
+							<!-- get variable for delete key from variable declared above on the foreach loop. -->
+							<a href="deleteitem.php?deleteitem=<?php echo $id; ?>">
+								<span class="glyphicon glyphicon-remove"></span>
+							</a>
+						</td>
 						<td id="tablespace"></td>
+					</tr>
+				<?php 
+						}
+					} else {
+						echo "";
+					}
+				?>
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-success">Checkout</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>

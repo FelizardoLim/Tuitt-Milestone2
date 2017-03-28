@@ -37,14 +37,17 @@ function get_content() {
 
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
-		$id = $row['id'];
-		$name = $row['name'];
-		$price = $row['price'];
-		$image = $row['image'];
-		$description = $row['description'];
-		$details = $row['details'];
-		$stock = $row['stock'];
-		$category_id = $row['category_id'];
+		// $id = $row['id'];
+		// $name = $row['name'];
+		// $price = $row['price'];
+		// $image = $row['image'];
+		// $description = $row['description'];
+		// $details = $row['details'];
+		// $stock = $row['stock'];
+		// $category_id = $row['category_id'];
+		
+		//if extracting for simple use --- shorthand of items above.
+		extract($row);
 
 		echo "
 		<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3' id='wrapper'>
@@ -52,7 +55,7 @@ function get_content() {
 				$name
 			</h3>
 			<img class='img-responsive inventoryimg' src='$image' alt='$name'>
-			<!-- modal start -->
+			<!-- modal more start -->
 				<div id='moremodal$id' class='modal fade' role='dialog'> 
 					<div class='modal-dialog'>
 						<div class='modal-content'>
@@ -72,12 +75,34 @@ function get_content() {
 							</div>
 						</div>
 					</div>
-				</div> 
-			<!-- modal end -->
+				</div>
+			<!-- modal more end -->
+			<!-- modal add to cart start -->
+				<div id='addtocart$id' class='modal fade' role='dialog'>
+					<div class='modal-dialog'>
+						<div class='modal-content'>
+							<div class='modal-header'>
+								<button type='button' class='close' data-dismiss='modal'>&times;</button>
+								<h3 class='modal-title'>Add to Cart</h3>
+							</div>
+							<div class='modal-body'>
+								<form class='form-group' method='POST' action='addtocart.php?id=$id'>
+									<label for='quantity'>Quantity</label>
+									<input required class='form-control' name='quantity' type='number' min=1 max=$stock><br>
+									<button type='submit' class='btn btn-success' name='addtocart'>Add to Cart</button>
+								</form>
+							</div>
+							<div class='modal-footer'>
+								<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- modal add to cart end -->
 			<div class='text-center' id='content'>
 				<div class='contentbtn'>
-					<button type='button' class='btn btn-info' data-toggle='modal' data-target='#moremodal$id'>More Details</button>
-					<button type='submit' class='btn btn-success'>Add to Cart</button>
+					<button type='button' class='btn btn-sm btn-info' data-toggle='modal' data-target='#moremodal$id'>More Details</button>
+					<button type='button' class='btn btn-sm btn-success' data-toggle='modal' data-target='#addtocart$id'>Add to Cart</button>
 				</div>
 			</div>
 		</div>";

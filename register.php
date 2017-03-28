@@ -38,17 +38,17 @@
 								<div class="modal-body">
 									<form class="form-group" method="POST">
 										<label>email: </label>
-										<input class="form-control" type="email" name="username" placeholder="Your Email Address"><br>
+										<input required class="form-control" type="email" name="username" placeholder="Your Email Address"><br>
 										<label>password: </label>
-										<input class="form-control" type="password" name="password" placeholder="Your New Password"><br>
+										<input required class="form-control" type="password" name="password" placeholder="Your New Password"><br>
 										<label>confirm password: </label>
-										<input class="form-control" type="password" name="confirmpassword" placeholder="Confirm Your New Password"><br>
+										<input required class="form-control" type="password" name="confirmpassword" placeholder="Confirm Your New Password"><br>
 										<label>name: </label>
-										<input class="form-control" type="text" name="name" placeholder="Your First and Last Name"><br>
+										<input required class="form-control" type="text" name="name" placeholder="Your First and Last Name"><br>
 										<label>address: </label>
-										<textarea class="form-control" type="text" name="address" placeholder="Your Delivery Address"></textarea><br>
+										<textarea required class="form-control" type="text" name="address" placeholder="Your Delivery Address"></textarea><br>
 										<label>contact number: </label>
-										<input class="form-control" type="text" name="contactnumber" placeholder="Your Mobile Number"><br>
+										<input required class="form-control" type="text" name="contactnumber" placeholder="Your Mobile Number"><br>
 										<button class="btn btn-default" type="submit" name="register">Register</button>
 									</form>
 								</div>

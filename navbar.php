@@ -10,6 +10,13 @@
 			</div>
 			<div class="collapse navbar-collapse" id="primarynavbar">
 				<ul class="nav navbar-nav navbar-right text-uppercase">
+					<?php if(isset($_SESSION['username']) && $_SESSION['role'] == '1') { ?>
+					<li><a href="#">admin</a></li>
+					<?php 
+						} else {
+							echo "";
+						}
+					?>
 					<li><a href="#">about</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">categories <span class="caret"></span></a>
@@ -27,7 +34,15 @@
 					<?php } else {
 						echo "<li><a href='logout.php'>logout</a></li>"; 
 					} ?>
+					<?php 
+						if(isset($_SESSION['cart'])) { 
+					?>	
 					<li><a class="glyphicon glyphicon-shopping-cart" aria-hidden="true" href="cart.php"></a></li>
+					<?php  
+						} else {
+							echo "";
+						}
+					?>
 				</ul>
 			</div>
 		</div>
