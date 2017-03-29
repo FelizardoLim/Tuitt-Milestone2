@@ -1,7 +1,7 @@
 					<?php 
 
 					if($_SERVER['REQUEST_METHOD'] == 'POST') {
-						include('connection.php'); 
+						require('connection.php'); 
 						$username = $_POST['username'];
 						$password = sha1($_POST['password']);
 						$name = $_POST['name'];
@@ -19,7 +19,12 @@
 							$result2 = mysqli_query($conn, $sql);
 							if($result AND $result2) {
 								session_start();
-								$_SESSION['message'] = "Registration Successful!";
+								$_SESSION['message'] = 
+								"<div>
+									<h4>Congratulations!</h4>
+									<p>You have completed our registration process. You're one step closer to easy shopping.</p>
+									<p>Please key-in your login credentials below to get started. </p>
+								</div>";
 								header('location: login.php');
 							}
 						}

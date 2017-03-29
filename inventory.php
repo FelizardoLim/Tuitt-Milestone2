@@ -6,7 +6,7 @@ function get_title() {
 
 
 function get_content() {
-	include('connection.php');
+	require('connection.php');
 	mysqli_set_charset($conn,"UTF8");
 
 	$sql = "SELECT DISTINCT id,category_type FROM category";
@@ -71,7 +71,7 @@ function get_content() {
 								<h4>Price:</h4><span>PHP ". number_format($price,2) ."</span>
 							</div>
 							<div class='modal-footer'>
-								<button type='submit' class='btn btn-default' data-dismiss='modal'>Close</button>
+								<button type='submit' class='btn btn-sm btn-default' data-dismiss='modal'>Close</button>
 							</div>
 						</div>
 					</div>
@@ -89,21 +89,33 @@ function get_content() {
 								<form class='form-group' method='POST' action='addtocart.php?id=$id'>
 									<label for='quantity'>Quantity</label>
 									<input required class='form-control' name='quantity' type='number' min=1 max=$stock><br>
-									<button type='submit' class='btn btn-success' name='addtocart'>Add to Cart</button>
+									<button type='submit' class='btn btn-sm btn-success' name='addtocart'>Add to Cart</button>
 								</form>
 							</div>
 							<div class='modal-footer'>
-								<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+								<button type='button' class='btn btn-sm btn-default' data-dismiss='modal'>Close</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			<!-- modal add to cart end -->
-			<div class='text-center' id='content'>
-				<div class='contentbtn'>
-					<button type='button' class='btn btn-sm btn-info' data-toggle='modal' data-target='#moremodal$id'>More Details</button>
-					<button type='button' class='btn btn-sm btn-success' data-toggle='modal' data-target='#addtocart$id'>Add to Cart</button>
-				</div>
+			<div class='text-center' id='content'>";
+			//to display and not display buttons for admin and normal user
+				if(isset($_SESSION['username']) && $_SESSION['role'] == '1') {
+					echo "
+						<div class='adminbtn'>
+							<a href='editproduct.php?id=$id'><button type='button' class='btn btn-sm btn-warning' style='width: 60px;'>Edit</button></a>
+							<a href='deleteproduct.php?id=$id'><button type='button' class='btn btn-sm btn-danger'>Delete</button></a>
+						</div>";
+				} else {
+					echo "
+						<div class='contentbtn'>
+							<button type='button' class='btn btn-sm btn-info' data-toggle='modal' data-target='#moremodal$id'>More Details</button>
+							<button type='button' class='btn btn-sm btn-success' data-toggle='modal' data-target='#addtocart$id'>Add to Cart</button>
+						</div>";
+				}
+			
+			echo "
 			</div>
 		</div>";
 	}

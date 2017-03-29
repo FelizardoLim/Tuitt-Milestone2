@@ -15,16 +15,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$result = mysqli_query($conn,$sql);
 	if(mysqli_num_rows($result)) {
 		session_start();
-		$_SESSION['message'] = "Login Successful!";
+		
 		$_SESSION['username'] = $username; 
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['role'] = $row['role_id'];
+		if($row['role_id'] == 1)
+			$_SESSION['message'] = 
+			"<div class='text-center'>
+				<h4>Administrator Access!</h4>
+				<h4>Here, you're allowed to do MORE! Get to work!</h4>
+			</div>";
+		else
+			$_SESSION['message'] = 
+			"<div class='text-center'>
+				<h4>Welcome! Let's start shopping!</h4>
+			</div>";
 		header('location: index.php');
 	}
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -53,9 +63,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<?php require_once('navbar.php'); ?>
 	<!-- login -->
 	<div class="container-fluid loginbg">
-		<?php if(isset($message)) {
-			echo "$message";
-			} ?>
+		<?php 
+			if(isset($message)) {
+				echo "$message";
+				} 
+		?>
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6 col-xs-12">
 				<div>
