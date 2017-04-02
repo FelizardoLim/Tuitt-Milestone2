@@ -62,31 +62,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<!-- navbar -->
 	<?php require_once('navbar.php'); ?>
 	<!-- login -->
-	<div class="container-fluid loginbg">
+	<div class="container-fluid logindiv">
 		<?php 
 			if(isset($message)) {
 				echo "$message";
 				} 
 		?>
 		<div class="row">
-			<div class="col-sm-offset-3 col-sm-6 col-xs-12">
-				<div>
-					<h3>Login</h3>
-					<form class="form-group" method="POST" action="">
-						<div class="form-group">
-							<label>email: </label>
-							<input class="form-control" type="email" name="username" placeholder="Your Username">
-						</div>
-						<div class="form-group">
-							<label>password: </label>
-							<input class="form-control" type="password" name="password" placeholder="Your Password">
-						</div>
-						<button class="btn btn-default" name="login" type="submit">Login</button>
-					</form>
-					<!-- register modal start -->
-					<?php require_once('register.php') ?> 
-					<!-- register modal end -->
-				</div>
+			<div class="col-sm-offset-3 col-sm-6 col-xs-12 loginmain">
+				<h3>Login</h3>
+				<form class="form-group" method="POST" action="">
+					<div class="form-group">
+						<label>email: </label>
+						<input class="form-control" type="email" name="username" placeholder="Your Username">
+					</div>
+					<div class="form-group">
+						<label>password: </label>
+						<input class="form-control" type="password" name="password" placeholder="Your Password">
+					</div>
+					<button class="btn btn-default" name="login" type="submit">Login</button>
+				</form>
+				<!-- register modal start -->
+				<?php require_once('register.php'); ?> 
+				<!-- register modal end -->
 			</div>
 		</div>
 	</div>

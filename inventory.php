@@ -13,7 +13,7 @@ function get_content() {
 	$result = mysqli_query($conn, $sql);
 
 	echo "<div class='categorydropdown'>";
-	echo "<form class='form-group col-xs-2 col-xs-offset-10' method='POST' action=''>";
+	echo "<form class='form-group col-sm-3 col-sm-offset-9' method='POST' action=''>";
 	echo "<select class='form-control' name='category_type'>";
 	echo "<option>All</option>";
 	while($row = mysqli_fetch_assoc($result)){
@@ -51,7 +51,7 @@ function get_content() {
 
 		echo "
 		<div class='col-xs-12 col-sm-6 col-md-4 col-lg-3' id='wrapper'>
-			<h3 class='text-center'>
+			<h3 class='text-center textcolor'>
 				$name
 			</h3>
 			<img class='img-responsive inventoryimg' src='$image' alt='$name'>
@@ -87,7 +87,7 @@ function get_content() {
 							</div>
 							<div class='modal-body'>
 								<form class='form-group' method='POST' action='addtocart.php?id=$id'>
-									<label for='quantity'>Quantity</label>
+									<label for='quantity'>Quantity: </label>
 									<input required class='form-control' name='quantity' type='number' min=1 max=$stock><br>
 									<button type='submit' class='btn btn-sm btn-success' name='addtocart'>Add to Cart</button>
 								</form>
@@ -99,12 +99,58 @@ function get_content() {
 					</div>
 				</div>
 			<!-- modal add to cart end -->
+			<!-- modal edit product start -->
+				<div id='editproduct$id' class='modal fade' role='dialog'>
+					<div class='modal-dialog'>
+						<div class='modal-content'>
+							<div class='modal-header'>
+								<button type='button' class='close' data-dismiss='modal'>&times;</button>
+								<h3 class='modal-title'>Edit $name</h3>
+							</div>
+							<div class='modal-body'>
+								<form class='form-group' method='POST' action='editproduct.php?id=$id'>
+									<div class='form-group'>
+										<label for='name'>Name: </label>
+										<input type='text' name='name' class='form-control' value='$name'>
+									</div>
+									<div class='form-group'>
+										<label for='price'>Price: </label>
+										<input type='number' min=1 name='price' class='form-control' value='$price'>
+									</div>
+									<div class='form-group'>
+										<label for='image'>Image location: </label>
+										<input type='text' name='image' class='form-control' value='$image'>
+									</div>
+									<div class='form-group'>
+										<label for='description'>Description: </label>
+										<input type='text' name='description' class='form-control' value='$description'>
+									</div>
+									<div class='form-group'>
+										<label for='details'>Details: </label>
+										<input type='text' name='details' class='form-control' value='$details'>
+									</div>
+									<div class='form-group'>
+										<label for='stock'>Stock: </label>
+										<input type='number' min='1' name='stock' class='form-control' value='$stock'>
+									</div>
+									<div class='form-group'>
+										<button type'submit' class='btn btn-sm btn-success' name='editproduct'>Submit Changes</button>
+									</div>
+								</form>
+							</div>
+							<div class='modal-footer'>
+								<button type='button' class='btn btn-sm btn-default' data-dismiss='modal'>Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- modal edit product end -->
 			<div class='text-center' id='content'>";
 			//to display and not display buttons for admin and normal user
 				if(isset($_SESSION['username']) && $_SESSION['role'] == '1') {
 					echo "
 						<div class='adminbtn'>
-							<a href='editproduct.php?id=$id'><button type='button' class='btn btn-sm btn-warning' style='width: 60px;'>Edit</button></a>
+							<button type='button' class='btn btn-sm btn-warning' data-toggle='modal' data-target='#editproduct$id' style='width: 60px;'>Edit</button>
 							<a href='deleteproduct.php?id=$id'><button type='button' class='btn btn-sm btn-danger'>Delete</button></a>
 						</div>";
 				} else {
@@ -122,7 +168,5 @@ function get_content() {
 }
 
 get_content();
-
-
 
 ?>

@@ -3,6 +3,13 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+.textcolor {
+	color: white;
+}
+
+.textcolor2 {
+	color: black;
+}
 
 /* primary navbar */
 .navbar {
@@ -21,16 +28,32 @@ label {
 
 
 /* main */
+
+.maindiv {
+	background: url('images/inventory/index.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 20px 100px;
+}
+
+.mainbg {
+	background-color: rgba(50, 50, 50, 0.4);
+	padding: 20px 40px;
+}
+
+.modal-title {
+	color: black;
+}
+
 .categorydropdown {
 	text-align: right;
 	padding-top: 20px;
 }
 
-
 #wrapper {
 	position: relative;
 }
-
 
 #content {
 	position: absolute;
@@ -55,7 +78,7 @@ label {
 
 .contentbtn {
 	position: absolute;
-	bottom: 0;
+	bottom: 5px;
 	left: 0;
 	width: 100%;
 	text-align: center;
@@ -63,7 +86,7 @@ label {
 
 .adminbtn {
 	position: absolute;
-	bottom: 0px;
+	bottom: 5px;
 	left: 0;
 	width: 100%;
 	text-align: center;
@@ -110,9 +133,34 @@ label {
 
 
 /* login */
-.loginbg {
-	background-color: beige;
-	padding: 20px 40px;
+.alert {
+	margin-bottom: 0;
+}
+
+.logindiv{
+	background: url('images/inventory/login.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 100px 40px;
+}
+
+
+/* about */
+
+.aboutdiv {
+	background: url('images/inventory/about.jpg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 100px 40px;
+}
+
+.aboutmain, .loginmain {
+	background-color: rgba(50, 50, 50, 0.4);
+	text-align: justify;
+	color: white;
+	padding-bottom: 20px;
 }
 
 /* admin */

@@ -31,7 +31,7 @@
 		unset($_SESSION['message']);
 	} ?>
 	<!-- main content start -->
-	<?php require_once('maincontent.php') ?>
+	<?php require_once('maincontent.php'); ?>
 	<!-- main content end -->
 	<!-- footer -->
 	<?php require_once('footer.php'); ?>

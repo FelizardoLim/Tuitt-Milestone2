@@ -60,7 +60,7 @@
 							</form>
 						</td>
 						<td id="tableprice">
-							<?php echo number_format($price,2); ?>
+							<?php echo "PHP "; echo number_format($price,2); ?>
 						</td>
 						<td id="tableremove">
 							<!-- get variable for delete key from variable declared above on the foreach loop. -->

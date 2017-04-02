@@ -6,7 +6,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.php">BRAND</a>
+				<a class="navbar-brand" href="index.php">Fruits To Go</a>
 			</div>
 			<div class="collapse navbar-collapse" id="primarynavbar">
 				<ul class="nav navbar-nav navbar-right text-uppercase">
@@ -17,7 +17,7 @@
 							echo "";
 						}
 					?>
-					<li><a href="#">about</a></li>
+					<li><a href="about.php">about</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">categories <span class="caret"></span></a>
 						<ul class="dropdown-menu">

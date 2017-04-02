@@ -12,6 +12,5 @@
 	
 		$sql = "INSERT INTO product (name, price, image, description, details, stock, category_id) VALUES ('$name', '$price', '$image', '$description', '$details', '$stock', '$category_id')";
 		$result = mysqli_query($conn, $sql);
-
 	}
 ?>
