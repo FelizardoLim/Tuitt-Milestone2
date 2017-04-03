@@ -32,7 +32,7 @@
 			<table class="col-xs-12 table text-center">
 				<tbody>
 				<?php 
-					include('connection.php');
+					require('connection.php');
 					mysqli_set_charset($conn,"UTF8");
 
 					if(isset($_SESSION['cart'])) {
@@ -79,11 +79,11 @@
 				</tbody>
 			</table>
 			<div class="text-center" style="width: 100%; padding-bottom: 20px;">
-				<button type="submit" class="btn btn-success">Checkout 
+				<a href="checkout.php"></a><button type="submit" class="btn btn-success" name="checkout">Checkout 
 					<?php 
 						echo "PHP ".number_format($total,2);
 					?>
-				</button>
+				</button></a>
 			</div>
 		</div>
 	</div>
