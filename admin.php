@@ -27,9 +27,10 @@
 	<?php require_once('navbar.php'); ?>
 	<!-- admin main -->
 	<?php ?>
-	<div class="container">
+	<div class="container-fluid admindiv">
 		<div class="row">
-			<div class='col-xs-6 col-xs-offset-3 add_div'>
+			<div class='col-xs-12 col-sm-6 col-sm-offset-3 add_div'>
+				<h3>Add New Product</h3>
 				<form method="POST" class="form-group" action="additem.php">
 					<div class="form-group">
 						<label for="name">Name: </label>
@@ -45,11 +46,11 @@
 					</div>
 					<div class="form-group">
 						<label for="description">Description: </label>
-						<input type="text" name="description" class="form-control">
+						<textarea type="text" name="description" class="form-control" rows="5"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="details">Details: </label>
-						<input type="text" name="details" class="form-control">
+						<textarea type="text" name="details" class="form-control" rows="5"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="stock">Stock: </label>

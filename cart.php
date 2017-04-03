@@ -26,19 +26,22 @@
 	<!-- navbar -->
 	<?php require_once('navbar.php'); ?>
 	<!-- cart start -->
-	<h3 class="text-center">My Cart</h3>
-	<div class="container">
-		<div class="table-responsive">
-			<table class="table text-center">
+	<div class="container-fluid cartdiv">
+	<h3 class="text-center textcolor">My Cart</h3>
+		<div class="row">
+			<table class="col-xs-12 table text-center">
 				<tbody>
 				<?php 
 					include('connection.php');
 					mysqli_set_charset($conn,"UTF8");
 
 					if(isset($_SESSION['cart'])) {
+						$total = "";
 						foreach ($_SESSION['cart'] as $id => $quantity) {
 							$sql = "SELECT * FROM product WHERE id=$id";
 							extract(mysqli_fetch_assoc(mysqli_query($conn, $sql)));
+							$subtotal = $price*$quantity; 
+							$total = $total + $subtotal;
 
 					//1. $sql query - $sql = "...."
 					//2. run the query -- $result = mysqli_query($conn, $sql)
@@ -46,29 +49,26 @@
 					//4. extract to get each index as separate variable based on (key). Without extract - variable naming needs to be declared eg. $name = $row['name'];
 				?>
 					<tr>
-						<td id="tablespace"></td>
-						<td id="tableimg">
+						<td class="col-xs-4 col-sm-3 col-md-1">
 							<img src="<?php echo "$image"; ?>" class="img-responsive">
 						</td>
-						<td id="tablename">
+						<td class="textcolor col-xs-2 col-sm-2 col-md-1">
 							<?php echo "$name"; ?>
 						</td>
-						<td id="tablespace"></td>
-						<td id="tablequantity">
+						<td class="col-xs-3 col-sm-2 col-md-1">
 							<form method="POST">
 								<input class="form-control" type="number" min="1" max="$stock" value="<?php echo $_SESSION['cart'][$id]; ?>">
 							</form>
 						</td>
-						<td id="tableprice">
+						<td class="textcolor col-xs-2 col-sm-2 col-md-1">
 							<?php echo "PHP "; echo number_format($price,2); ?>
 						</td>
-						<td id="tableremove">
+						<td class="col-xs-1 col-sm-1 col-md-1">
 							<!-- get variable for delete key from variable declared above on the foreach loop. -->
 							<a href="deleteitem.php?deleteitem=<?php echo $id; ?>">
 								<span class="glyphicon glyphicon-remove"></span>
 							</a>
 						</td>
-						<td id="tablespace"></td>
 					</tr>
 				<?php 
 						}
@@ -76,13 +76,15 @@
 						echo "";
 					}
 				?>
-					<tr>
-						<td>
-							<button type="submit" class="btn btn-success">Checkout</button>
-						</td>
-					</tr>
 				</tbody>
 			</table>
+			<div class="text-center" style="width: 100%; padding-bottom: 20px;">
+				<button type="submit" class="btn btn-success">Checkout 
+					<?php 
+						echo "PHP ".number_format($total,2);
+					?>
+				</button>
+			</div>
 		</div>
 	</div>
 	<!-- cart end -->

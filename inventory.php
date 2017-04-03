@@ -19,7 +19,7 @@ function get_content() {
 	while($row = mysqli_fetch_assoc($result)){
 		$id = $row['id'];
 		$category = $row['category_type'];
-		if(isset($_POST['category_type']) && $_POST['category_type']==$category)
+		if(isset($_POST['category_type']) && $_POST['category_type']==$id)
 			echo "<option selected>$category</option>";
 		else
 			echo "<option value='$id'>$category</option>";
@@ -123,15 +123,29 @@ function get_content() {
 									</div>
 									<div class='form-group'>
 										<label for='description'>Description: </label>
-										<input type='text' name='description' class='form-control' value='$description'>
+										<textarea type='text' name='description' class='form-control' rows='5'>$description</textarea>
 									</div>
 									<div class='form-group'>
 										<label for='details'>Details: </label>
-										<input type='text' name='details' class='form-control' value='$details'>
+										<textarea type='text' name='details' class='form-control' rows='5'>$details</textarea>
 									</div>
 									<div class='form-group'>
 										<label for='stock'>Stock: </label>
 										<input type='number' min='1' name='stock' class='form-control' value='$stock'>
+									</div>
+									<div class='form-group'>
+										<label for='category_id'>Category: </label>"; 
+
+										$sql2 = "SELECT DISTINCT id,category_type FROM category";
+										$result2 = mysqli_query($conn, $sql2);
+
+										echo "<select class='form-control' name='category_id'>";
+										while($row = mysqli_fetch_assoc($result2)){
+											$id2 = $row['id'];
+											$category2 = $row['category_type'];
+											echo "<option value='$id2'>$category2</option>";
+										}
+										echo "</select>
 									</div>
 									<div class='form-group'>
 										<button type'submit' class='btn btn-sm btn-success' name='editproduct'>Submit Changes</button>
@@ -145,13 +159,34 @@ function get_content() {
 					</div>
 				</div>
 			<!-- modal edit product end -->
+			<!-- modal delete to cart start -->
+				<div id='delete$id' class='modal fade' role='dialog'>
+					<div class='modal-dialog'>
+						<div class='modal-content'>
+							<div class='modal-header'>
+								<button type='button' class='close' data-dismiss='modal'>&times;</button>
+								<h3 class='modal-title'>Delete $name</h3>
+							</div>
+							<div class='modal-body'>
+								<h4>Are you sure?</h4>
+								<p>Proceeding with this action would completely erase all information tied to this item. </p>
+								<p>Please review the details carefully before completing this action as changes done afterwards would be irreversible. </p>
+								<a href='deleteproduct.php?id=$id'><button type'submit' class='btn btn-sm btn-danger' name='delete'>Yes! Delete this Item</button></a>
+							</div>
+							<div class='modal-footer'>
+								<button type='button' class='btn btn-sm btn-default' data-dismiss='modal'>Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- modal delete to cart end -->
 			<div class='text-center' id='content'>";
 			//to display and not display buttons for admin and normal user
 				if(isset($_SESSION['username']) && $_SESSION['role'] == '1') {
 					echo "
 						<div class='adminbtn'>
 							<button type='button' class='btn btn-sm btn-warning' data-toggle='modal' data-target='#editproduct$id' style='width: 60px;'>Edit</button>
-							<a href='deleteproduct.php?id=$id'><button type='button' class='btn btn-sm btn-danger'>Delete</button></a>
+							<button type='button' class='btn btn-sm btn-danger' data-toggle='modal' data-target='#delete$id'>Delete</button>
 						</div>";
 				} else {
 					echo "
